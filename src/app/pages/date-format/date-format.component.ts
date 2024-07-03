@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,7 +10,8 @@ import { DateFormatterPipe } from 'src/shared/pipes/date-formatter.pipe';
   standalone: true,
   imports: [DateFormatterPipe, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule,],
   templateUrl: './date-format.component.html',
-  styleUrl: './date-format.component.scss'
+  styleUrl: './date-format.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateFormatComponent {
   values: string[] = [

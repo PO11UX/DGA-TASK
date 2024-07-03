@@ -1,5 +1,5 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, FormArray, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,7 +14,8 @@ import { CustomDateInputComponent } from './custom-date-input.component';
   standalone: true, 
   imports: [MatInputModule, MatButtonModule, MatCardModule, ReactiveFormsModule, CommonModule, NgFor, NgIf, MatSelectModule, MatDatepickerModule, MatNativeDateModule, CustomDateInputComponent],
   templateUrl: './work-experience.component.html',
-  styleUrl: './work-experience.component.scss'
+  styleUrl: './work-experience.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkExperienceComponent implements OnInit {
   experienceForm!: FormGroup;

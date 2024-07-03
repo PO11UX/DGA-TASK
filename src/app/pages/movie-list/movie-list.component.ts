@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MovieService } from './services/movie.service';
 import { Observable } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
@@ -13,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule, FormsModule, CommonModule, MatInputModule, MatButtonModule,],
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.scss'
+  styleUrl: './movie-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieListComponent {
   movies$!: Observable<any[]>;

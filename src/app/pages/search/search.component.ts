@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [MatFormFieldModule,MatFormFieldModule, MatInputModule, MatButtonModule, MatTabsModule, FormsModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss'
+  styleUrl: './search.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
   value1: string = '';

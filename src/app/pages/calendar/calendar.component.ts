@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, getDay, startOfWeek, endOfWeek } from 'date-fns';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -8,7 +8,8 @@ import { MatDividerModule } from '@angular/material/divider';
   standalone: true,
   imports: [MatCardModule, MatDividerModule, CommonModule],
   templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.scss'
+  styleUrl: './calendar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent {
   currentMonth: Date = new Date();
