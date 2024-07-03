@@ -1,0 +1,27 @@
+.comparison-container {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    
+    .input-field {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    
+    .match-percentage {
+        font-weight: bold;
+        padding: 8px;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    li {
+        padding: 4px 0;
+    }
+    button{
+        margin-right: 10px;
+    }
+}

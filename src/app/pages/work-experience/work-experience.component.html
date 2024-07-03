@@ -1,0 +1,106 @@
+<form [formGroup]="experienceForm">
+    <div formArrayName="jobs">
+        @for(job of jobs.controls; track job; let jobIndex = $index){
+      <div [formGroupName]="jobIndex" class="job-card">
+        <mat-card>
+          <mat-card-title>Job {{ jobIndex + 1 }}</mat-card-title>
+          <mat-form-field appearance="fill">
+            <mat-label>Company Name</mat-label>
+            <input matInput formControlName="companyName">
+            @if(job.get('companyName')?.invalid && job.get('companyName')?.touched){
+                <mat-error >
+                    Company Name is required
+                </mat-error>
+            }
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Company Website</mat-label>
+            <input matInput formControlName="companyWebsite">
+            @if(job.get('companyWebsite')?.invalid && job.get('companyWebsite')?.touched){
+            <mat-error >
+              Valid Company Website is required
+            </mat-error>
+        }
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Company Description</mat-label>
+            <textarea matInput formControlName="companyDescription"></textarea>
+            @if(job.get('companyDescription')?.invalid && job.get('companyDescription')?.touched){
+            <mat-error >
+              Company Description is required
+            </mat-error>
+        }
+          </mat-form-field>
+  
+          <div formArrayName="positions">
+            @for(position of getPositions(job).controls; track position; let positionIndex = $index){
+
+            <div [formGroupName]="positionIndex">
+              <mat-card>
+                <mat-card-title>Position {{ positionIndex + 1 }}</mat-card-title>
+                <mat-form-field appearance="fill">
+                  <mat-label>Position Name</mat-label>
+                  <input matInput formControlName="positionName">
+                  @if(position.get('positionName')?.invalid && position.get('positionName')?.touched){
+                  <mat-error >
+                    Position Name is required
+                  </mat-error>
+                }
+                </mat-form-field>
+  
+                <mat-form-field appearance="fill">
+                  <mat-label>Position Level</mat-label>
+                  <mat-select formControlName="positionLevel">
+                    <mat-option value="Junior">Junior</mat-option>
+                    <mat-option value="Middle">Middle</mat-option>
+                    <mat-option value="Senior">Senior</mat-option>
+                  </mat-select>
+                  @if(position.get('positionLevel')?.invalid && position.get('positionLevel')?.touched){
+                  <mat-error >
+                    Position Level is required
+                  </mat-error>
+                }
+                </mat-form-field>
+  
+                <mat-form-field appearance="fill">
+                  <mat-label>Position Description</mat-label>
+                  <textarea matInput formControlName="positionDescription"></textarea>
+                  @if(position.get('positionDescription')?.invalid && position.get('positionDescription')?.touched){
+                  <mat-error >
+                    Position Description is required
+                  </mat-error>
+                }
+                </mat-form-field>
+                <div class="date-container">
+
+                    <app-custom-date-input dateLable="startDate" formControlName="startDate"></app-custom-date-input>
+                    @if(position.get('startDate')?.invalid && position.get('startDate')?.touched){
+                        <mat-error >
+                            Start Date is required
+                        </mat-error>
+                    }
+                    
+                    <app-custom-date-input dateLable="endDate" formControlName="endDate"></app-custom-date-input>
+                    @if(position.get('endDate')?.invalid && position.get('endDate')?.touched){
+                        <mat-error >
+                            End Date is required
+                        </mat-error>
+                    }
+                </div>
+  
+                <button mat-raised-button color="warn" (click)="removePosition(jobIndex, positionIndex)">Remove Position</button>
+              </mat-card>
+            </div>
+        }
+            <button mat-raised-button (click)="addPosition(jobIndex)">Add Position</button>
+          </div>
+  
+          <button mat-raised-button color="warn" (click)="removeJob(jobIndex)">Remove Job</button>
+        </mat-card>
+      </div>
+    }
+      <button mat-raised-button (click)="addJob()">Add Job</button>
+    </div>
+  </form>

@@ -1,0 +1,78 @@
+.calendar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .day-header {
+    font-weight: bold;
+  }
+  
+  .day {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .today {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .holiday {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .weekend {
+    background-color: #ffe0b2;
+  }
+  
+  .other-month {
+    color: #9e9e9e;
+  }
+
+
+
+  .legend {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    .legend-item {
+        display: flex;
+        align-items: center;
+      
+      .legend-color {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        border-radius: 3px;
+      }
+      
+      .legend-color.today {
+        background-color: #4caf50;
+      }
+      
+      .legend-color.holiday {
+        background-color: #f44336;
+      }
+      
+      .legend-color.weekend {
+        background-color: #ffe0b2;
+      }
+      
+      .legend-color.other-month {
+        background-color: #9e9e9e;
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,34 @@
+<mat-card class="calendar-container">
+  <mat-card-header>
+    <mat-card-title>{{ currentMonth | date: 'MMMM yyyy' }}</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <div class="calendar-grid">
+    @for(day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; track day){
+    <div class="day-header">
+      {{ day }}
+    </div>
+    }
+    @for(day of daysInMonth; track day){
+    <div class="day" [class.today]="isToday(day)" [class.holiday]="isHoliday(day)" [class.weekend]="isWeekend(day)"
+      [class.other-month]="!isCurrentMonth(day)">
+      {{ day | date: 'd' }}
+    </div>
+    }
+  </div>
+  <mat-divider></mat-divider>
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-color today"></span> Today
+    </div>
+    <div class="legend-item">
+      <span class="legend-color holiday"></span> Holiday
+    </div>
+    <div class="legend-item">
+      <span class="legend-color weekend"></span> Weekend
+    </div>
+    <div class="legend-item">
+      <span class="legend-color other-month"></span> Other Month
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,27 @@
+  <mat-form-field appearance="fill" class="input-field">
+    <mat-label>Find Movie</mat-label>
+    <input matInput placeholder="Enter movie name" [(ngModel)]="searchTerm">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="search()">Search</button>
+  
+  <div class="movie-list">
+    @for(movie of movies$ | async; track movie){
+
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>{{ movie.title }}</mat-card-title>
+        <mat-card-subtitle>{{ movie.year }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="movie.image">
+      <mat-card-content>
+        <p>{{ movie.plot }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button [href]="'https://www.imdb.com/title/' + movie.id + '/'" target="_blank">
+          IMDB Link
+        </a>
+      </mat-card-actions>
+    </mat-card>
+}
+  </div>
+  

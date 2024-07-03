@@ -1,0 +1,24 @@
+header {
+  mat-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    position: relative;
+
+    a {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      padding: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    } 
+    a.active-link {
+      color: black
+    }
+    
+  }
+
+
+}

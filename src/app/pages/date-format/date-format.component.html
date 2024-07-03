@@ -1,0 +1,13 @@
+<div class="container">
+    <mat-form-field appearance="fill" class="input-field">
+      <mat-label>Add a new value</mat-label>
+      <input matInput placeholder="New value" [(ngModel)]="newValue" (keyup.enter)="addValue()">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addValue()">Add Value</button>
+    @for(value of values; track value){
+    <div class="formatted-value">
+      Original: {{ value }}<br>
+      Formatted: {{ value | dateFormatter }}
+    </div>
+}
+  </div>

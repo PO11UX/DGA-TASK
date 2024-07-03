@@ -1,0 +1,36 @@
+<div class="comparison-container">
+    <mat-form-field appearance="fill" class="input-field">
+      <mat-label>Type your value</mat-label>
+      <input matInput placeholder="Value 1" [(ngModel)]="value1">
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="input-field">
+      <mat-label>Type elements for value2</mat-label>
+      <input matInput placeholder="Value 2 element" [(ngModel)]="value2Input" (keyup.enter)="addValue2()">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addValue2()">Add Element</button>
+    @if(value2.length){
+
+        <div>
+            <h3>Value2 Elements</h3>
+            <ul>
+                @for(element of value2; track element){
+                    <li >{{ element }}</li>
+                }
+            </ul>
+        </div>
+    }
+  
+    <button mat-raised-button color="primary" (click)="compareValues()">Compare</button>
+    @if(matchResults.length){
+    <mat-tab-group >
+        @for(result of matchResults; track result){
+      <mat-tab label="{{ result.value }}">
+        <ng-template matTabContent>
+          <div class="match-percentage">Match: {{ roundValue(result.percentage) }}%</div>
+        </ng-template>
+      </mat-tab>
+    }
+    </mat-tab-group>
+}
+  </div>
